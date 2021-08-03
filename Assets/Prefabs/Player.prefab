@@ -166,6 +166,8 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 1
+  BulletPrefab: {fileID: 0}
+  bulletPosition: {fileID: 0}
 --- !u!61 &7652133144498475075
 BoxCollider2D:
   m_ObjectHideFlags: 0
