@@ -9,8 +9,6 @@ public class Hittable : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
-            var UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-            UIManager.Get("GameOverScreen").SetActive(true);
             GameObject Player = GameObject.Find("Level/Entities/Player");
             Player.GetComponent<Player>().Die();
         }

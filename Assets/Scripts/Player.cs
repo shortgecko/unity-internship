@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -44,7 +45,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.transform.position);
+        if (Math.Abs(collision.contacts[0].normal.x) > 0.5f)
+        {
+            Die();
+        }
     }
 
 
@@ -52,9 +56,12 @@ public class Player : MonoBehaviour
     {
         foreach (var component in GetComponents(typeof(Component)))
         {
+            var UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+            UIManager.Get("GameOverScreen").SetActive(true);
             var type = component.GetType();
             if (type != typeof(SpriteRenderer) && type != typeof(Transform))
             {
+
                 Destroy(component);
             }
         }
