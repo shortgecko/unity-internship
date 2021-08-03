@@ -1497,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7652133144498475076, guid: 20ab5ad7c0457ae4d93b0dadd1367e39, type: 3}
       propertyPath: jumpForce
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7652133144498475076, guid: 20ab5ad7c0457ae4d93b0dadd1367e39, type: 3}
       propertyPath: BulletPrefab
