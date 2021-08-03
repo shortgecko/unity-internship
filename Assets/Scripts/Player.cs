@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Rigidbody2D rigidBody;
     public float Speed = 700;
     public float jumpForce = 800;
@@ -14,14 +13,17 @@ public class Player : MonoBehaviour
     public GameObject BulletPrefab;
     public Transform bulletPosition;
 
-    void Start()
+    private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    private bool IsGrounded()
+    private bool Grounded
     {
-        return Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, GroundLayer);
+        get
+        {
+            return Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, GroundLayer);
+        }
     }
 
     // Update is called once per frame
@@ -32,22 +34,29 @@ public class Player : MonoBehaviour
             GameObject.Instantiate(BulletPrefab, bulletPosition.position, Quaternion.identity);
         }
 
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if(Input.GetButtonDown("Jump") && Grounded)
         {
             rigidBody.AddForce(new Vector2(0, jumpForce));
         }
 
-        float x = Input.GetAxis("Horizontal");
-        rigidBody.velocity = new Vector2(Speed , rigidBody.velocity.y);
-
-
+        rigidBody.velocity = new Vector2(Speed, rigidBody.velocity.y);
     }
 
-    void OnCollisionEnter2D(Collision2D c)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        Debug.Log(collision.transform.position);
     }
 
-    
-    
+
+    public void Die()
+    {
+        foreach (var component in GetComponents(typeof(Component)))
+        {
+            var type = component.GetType();
+            if (type != typeof(SpriteRenderer) && type != typeof(Transform))
+            {
+                Destroy(component);
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ public class Hittable : MonoBehaviour
             var UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
             UIManager.Get("GameOverScreen").SetActive(true);
             GameObject Player = GameObject.Find("Level/Entities/Player");
-            Player.GetComponent<Player>().enabled = false;
+            Player.GetComponent<Player>().Die();
         }
     }
 }
