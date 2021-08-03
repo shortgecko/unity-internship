@@ -13,7 +13,10 @@ public class UIManager : MonoBehaviour
         {
            GameObject childObject = child.gameObject;
            UIObjects.Add(childObject.name, childObject);
-           childObject.SetActive(false);
+           if(childObject.tag == "StartUnactive")
+            {
+                childObject.SetActive(false);
+            }
         }
     }
 

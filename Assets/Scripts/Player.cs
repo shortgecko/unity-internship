@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             GameObject.Instantiate(BulletPrefab, bulletPosition.position, Quaternion.identity);
-            Debug.Log("shoot!");
         }
 
         if(Input.GetButtonDown("Jump") && IsGrounded())
@@ -44,5 +43,11 @@ public class Player : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D c)
+    {
+
+    }
+
+    
     
 }
