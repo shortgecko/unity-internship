@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -35,7 +33,7 @@ public class Player : MonoBehaviour
             GameObject.Instantiate(BulletPrefab, bulletPosition.position, Quaternion.identity);
         }
 
-        if(Input.GetButtonDown("Jump") && Grounded)
+        if (Input.GetButtonDown("Jump") && Grounded)
         {
             rigidBody.AddForce(new Vector2(0, jumpForce));
         }
@@ -45,7 +43,8 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Math.Abs(collision.contacts[0].normal.x) > 0.5f)
+        //Debug.Log(Math.Abs(collision.contacts[0].normal.x));
+        if (Math.Abs(collision.contacts[0].normal.x) != 0f)
         {
             Die();
         }
@@ -54,14 +53,16 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+
         foreach (var component in GetComponents(typeof(Component)))
         {
+            
             var UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
             UIManager.Get("GameOverScreen").SetActive(true);
             var type = component.GetType();
+
             if (type != typeof(SpriteRenderer) && type != typeof(Transform))
             {
-
                 Destroy(component);
             }
         }

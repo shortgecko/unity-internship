@@ -13,7 +13,7 @@ public class CoinUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var player = GameObject.Find("Level/Entities/Player").GetComponent<PlayerStats>();
+        var player = LevelData.Player.GetComponent<PlayerStats>();
         if(player != null)
         {
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = player.Coins().ToString();
