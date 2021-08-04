@@ -14,5 +14,13 @@ public static class LevelData
             return GameObject.Find("Level/Entities/Player"); 
         }
     }
+    public static UIManager UIManager
+    {
+        get
+        {
+            return GameObject.Find("UIManager").GetComponent<UIManager>();
+        }
+    }
+
 
 }
