@@ -8,30 +8,23 @@ public class MovingSpike : MonoBehaviour
     private int sign;
     private float Distance;
     private Rigidbody2D rigidBody;
+    private int direction;
 
     void Start()
     {
+        //Debug.Log(transform.TransformDirection(End.transform.position));
         rigidBody = GetComponent<Rigidbody2D>();
-
-        if(transform.position.x < End.transform.position.x)
-        {
-            sign = 1;
-        }
-        else if (transform.position.x > End.transform.position.x)
-        {
-            sign = -1;
-        }
-
-        Distance = Vector2.Distance(transform.position, End.transform.position);
-        Debug.Log(Distance);
+        Vector3 currentDirection = (transform.position - End.transform.position).normalized;
+        Debug.Log(currentDirection.x);
+        direction = (int)currentDirection.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x < End.transform.position.x)
+        if (transform.position.x  < End.transform.position.x)
         {
-            rigidBody.velocity = (new Vector2(sign * 1, rigidBody.velocity.y));
+            rigidBody.AddForce(new Vector2(direction * -500, rigidBody.velocity.y));
         }
     }
 }

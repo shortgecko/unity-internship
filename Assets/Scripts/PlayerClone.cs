@@ -22,7 +22,7 @@ public class PlayerClone : MonoBehaviour
         Player = LevelData.Player.GetComponent<Player>();
         Speed = Player.Speed;
         jumpForce = Player.jumpForce;
-        groundCheckRadius = 0.01f;
+        groundCheckRadius = Player.groundCheckRadius;
 
 
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
