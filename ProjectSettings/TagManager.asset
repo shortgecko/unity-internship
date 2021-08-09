@@ -8,6 +8,7 @@ TagManager:
   - New Tag
   - StartUnactive
   - Ground
+  - ScreenTrigger
   layers:
   - Default
   - TransparentFX

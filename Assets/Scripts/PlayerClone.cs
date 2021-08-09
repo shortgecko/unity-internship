@@ -25,7 +25,7 @@ public class PlayerClone : MonoBehaviour
         groundCheckRadius = Player.groundCheckRadius;
 
 
-        rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private bool Grounded
@@ -38,7 +38,7 @@ public class PlayerClone : MonoBehaviour
 
     private bool Touching(out Collider2D hit)
     {
-       hit = Physics2D.OverlapCircle(bulletPosition.position, 1f, JumpLayer);
+       hit = Physics2D.OverlapCircle(bulletPosition.position, 0.1f, JumpLayer);
        return (bool)hit;
     }
 
@@ -46,7 +46,7 @@ public class PlayerClone : MonoBehaviour
     {
        GameObject.Instantiate(BulletPrefab, bulletPosition.position, Quaternion.identity);
     }
-    bool jumped = false;
+
     void Jump()
     {
         if(Grounded )
@@ -56,7 +56,7 @@ public class PlayerClone : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
 
         rigidBody.velocity = new Vector2(Speed, rigidBody.velocity.y);
@@ -74,13 +74,13 @@ public class PlayerClone : MonoBehaviour
                     Jump();
                 }
             }
-            else
+            else 
             {
-                //Jump();
+                Jump();
             }
         }
 
-        Debug.Log(Grounded);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

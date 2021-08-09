@@ -24,7 +24,7 @@ public class MovingSpike : MonoBehaviour
     {
         if (transform.position.x  < End.transform.position.x)
         {
-            rigidBody.AddForce(new Vector2(direction * -500, rigidBody.velocity.y));
+            rigidBody.AddForce(new Vector2(direction * -5, rigidBody.velocity.y));
         }
     }
 }

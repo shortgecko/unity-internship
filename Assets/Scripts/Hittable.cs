@@ -9,7 +9,7 @@ public class Hittable : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
-            GameObject Player = GameObject.Find("Level/Entities/Player");
+            GameObject Player = LevelData.Player;
             Player.GetComponent<Player>().Die();
         }
     }
