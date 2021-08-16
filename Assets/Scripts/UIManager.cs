@@ -1,28 +1,36 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private Dictionary<string, GameObject> UIObjects = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> UIObjects;
 
     void Start()
     {
-        foreach(Transform child in gameObject.GetComponentInChildren<Transform>())
+        UIObjects = new Dictionary<string, GameObject>();
+
+        foreach (Transform child in gameObject.GetComponentInChildren<Transform>())
         {
            GameObject childObject = child.gameObject;
            UIObjects.Add(childObject.name, childObject);
            if(childObject.tag == "StartUnactive")
-            {
-                childObject.SetActive(false);
-            }
+           {
+               childObject.SetActive(false);
+           }
         }
     }
 
+
     public GameObject Get(string objectName)
     {
-        return UIObjects[objectName];
+        if(UIObjects.ContainsKey(objectName))
+        {
+            return UIObjects[objectName];
+        }
+
+        throw new Exception($"Game Object {objectName} does not exist.");
+
     }
 
 }

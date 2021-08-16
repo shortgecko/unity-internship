@@ -14,10 +14,6 @@ public class EndTrigger : MonoBehaviour
             UIManager.Get("WinScreen").SetActive(true);
             int buildIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(buildIndex + 1);
-            //if (buildIndex < SceneManager.sceneCount)
-            //{
-            //    SceneManager.LoadScene(buildIndex + 1);
-            //}
         }
     }
 

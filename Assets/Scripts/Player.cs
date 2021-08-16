@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         if (Touching)
         {
             
-            //Die();
+            Die();
         }
 
     }
@@ -80,12 +80,11 @@ public class Player : MonoBehaviour
 
         foreach (var component in GetComponents(typeof(Component)))
         {
-
             var UIManager = LevelData.UIManager;
             UIManager.Get("GameOverScreen").SetActive(true);
-            var type = component.GetType();
+            Type componentType = component.GetType();
 
-            if (type != typeof(SpriteRenderer) && type != typeof(Transform))
+            if (componentType != typeof(SpriteRenderer) && componentType != typeof(Transform))
             {
                 Destroy(component);
             }

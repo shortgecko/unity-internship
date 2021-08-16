@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    private float m_Coins = 0f;
+
     public float Coins()
     {
         return m_Coins;
     }
 
-    private float m_Coins = 0f;
-
-    public void addCoin()
+    public void AddCoin()
     {
         m_Coins++;
     }

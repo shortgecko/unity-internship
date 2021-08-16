@@ -8,13 +8,12 @@ public class Popup : MonoBehaviour
 
     private void Start()
     {
-       
         popupObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if(collision.gameObject == LevelData.Player)
         {
             popupObject.SetActive(true);
         }

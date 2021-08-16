@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CoinUI : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class CoinUI : MonoBehaviour
         var player = LevelData.Player.GetComponent<PlayerStats>();
         if(player != null)
         {
-            gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = player.Coins().ToString();
+            GetComponent<TextMeshProUGUI>().text = player.Coins().ToString();
         }
     }
 }
